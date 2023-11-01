@@ -48,4 +48,10 @@ class AyahOpenAiVieModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  @override
+  void dispose() {
+    _conditionController.dispose();
+    super.dispose();
+  }
 }
