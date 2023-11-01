@@ -8,20 +8,28 @@ class SplashViewModel extends ChangeNotifier {
   Future<void> checkLogin(BuildContext context) async {
     final user = await SharedPreferencesUtils().getToken();
     if (user.isNotEmpty) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        ),
-        (route) => false,
+      Timer(
+        const Duration(seconds: 2),
+        () {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const HomeScreen(),
+            ),
+            (route) => false,
+          );
+        },
       );
     } else {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
-        ),
-        (route) => false,
+      Timer(
+        const Duration(seconds: 2),
+        () {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const LoginScreen(),
+            ),
+            (route) => false,
+          );
+        },
       );
     }
   }
